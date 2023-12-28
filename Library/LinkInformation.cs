@@ -5,6 +5,7 @@ using System.Text;
 
 namespace MeyerCorp.HateoasBuilder
 {
+    
     internal class LinkInformation
     {
         const string GET = "GET";
