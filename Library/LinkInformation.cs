@@ -5,21 +5,22 @@ using System.Text;
 
 namespace MeyerCorp.HateoasBuilder
 {
-    internal class LinkInformation 
+    internal class LinkInformation
     {
         const string GET = "GET";
-        
+
         readonly string RelativeUrl = String.Empty;
         readonly string _Method = GET;
+        public bool IsExternal { get; private set; }
 
-        private LinkInformation(string method = GET)=>Method = method;
+        private LinkInformation(string method = GET) => Method = method;
 
-        internal LinkInformation(string? rawRelativeUrl, string method = GET):this(method)
+        internal LinkInformation(string? rawRelativeUrl, string method = GET) : this(method)
         {
             RelativeUrl = rawRelativeUrl?.Trim() ?? String.Empty;
         }
 
-        internal LinkInformation(IEnumerable<object>? routeItems, IEnumerable<object>? queryItems, string method = GET):
+        internal LinkInformation(IEnumerable<object>? routeItems, IEnumerable<object>? queryItems, string method = GET) :
             this(method)
         {
             if (routeItems != null) RouteItems.AddRange(routeItems);
