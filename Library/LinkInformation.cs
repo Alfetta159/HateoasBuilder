@@ -13,9 +13,9 @@ namespace MeyerCorp.HateoasBuilder
         readonly string _Method = GET;
         public bool IsExternal { get; private set; }
 
-        private LinkInformation(string method = GET) => Method = method;
+        private LinkInformation(string? method = GET) => Method = method;
 
-        internal LinkInformation(string? rawRelativeUrl, string method = GET) : this(method)
+        internal LinkInformation(string? rawRelativeUrl, string? method = GET) : this(method)
         {
             RelativeUrl = rawRelativeUrl?.Trim() ?? String.Empty;
         }
@@ -75,9 +75,9 @@ namespace MeyerCorp.HateoasBuilder
 
             for (var index = 0; index < queryItems.Count(); index += 2)
             {
-                var name = items[index]?.ToString().Trim();
+                var name = items[index]?.ToString()?.Trim();
                 var value = items.Length > index + 1
-                     ? items[index + 1]?.ToString().Trim() ?? String.Empty
+                     ? items[index + 1]?.ToString()?.Trim() ?? String.Empty
                      : String.Empty;
 
                 if (String.IsNullOrWhiteSpace(name)) throw new ArgumentException("Parameter names cannot be null, empty, or whitespace.");
